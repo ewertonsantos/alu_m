@@ -10,6 +10,7 @@ module alu_m #(parameter WIDTH = 1) (accum,data,opcode,out,zero,clk);
   timeunit 1ns;
   timeprecision 100ps;
  
+  //works like a dictionary
   typedef enum logic [2:0] {
     HLT = 3'b0,
     SKZ = 3'b001,
@@ -19,14 +20,16 @@ module alu_m #(parameter WIDTH = 1) (accum,data,opcode,out,zero,clk);
     LDA = 3'b101,
     STO = 3'b110,
     JMP = 3'b111} opcode_e;
- 
-  typedef opcode_e [0:0] opcode_e_array_t;
- 
-  typedef struct packed {
-    opcode_e_array_t op;
-  } op_struct_t;
- 
-  opcode_e_array_t op_a;
+  
+  typedef opcode_e [0:0] opcode_e_array_t;   
+  opcode_e_array_t op_a;  
+  
+  //UNECESSERY CODE//
+//   opcode_e op_a;    
+//     typedef struct packed {
+//       opcode_e_array_t op;
+//     } op_struct_t;   
+//     op_struct_t op_a;
 
  
   always_comb begin
